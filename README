@@ -1,0 +1,5 @@
+IdaS2ETracer: an IDA importer for S2E traces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This library is a plugin for IDA Pro, allowing to import specific S2E state traces
+directly into IDA for static analysis.
