@@ -27,7 +27,7 @@ AS_IF([test -n $idasdk_path], [
 ])
 
 AM_INIT_AUTOMAKE([foreign])
-AC_CONFIG_FILES([Makefile src/Makefile s2e/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 
 AC_OUTPUT
 

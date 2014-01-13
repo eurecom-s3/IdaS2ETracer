@@ -1,4 +1,4 @@
-SUBDIRS = s2e src
+SUBDIRS = src
 
 EXTRA_DIST = \
              README \
