@@ -1,5 +1,48 @@
 IdaS2ETracer: an IDA importer for S2E traces
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+============================================
 
 This library is a plugin for IDA Pro, allowing to import specific S2E state traces
 directly into IDA for static analysis.
+Once imported into IDA, it is then possible to replay the execution back and forth 
+in the trace replayer, as well as navigating through the dynamic call-graph.
+
+Building
+========
+
+In order to build, you need:
+* IDAPro for linux (>= 6.4)
+* IDA SDK (>= 6.4)
+
+You can specify the path of your IDA SDK include files using `--with-idasdk`, and
+choose where to install the .plx plugin by specifying the `$DESTDIR`.
+
+A typical installation would be as follow:
+
+  autorecon -i
+  ln -s /opt/ida-6.4/libida.so /usr/lib/libida.so
+  ./configure --with-idasdk=~/idasdk64/include
+  make
+  DESTDIR=/opt/ida-6.4/plugins make install
+
+You need a proper 32bits toolchain in order to compile and link against IDA.
+
+Usage
+=====
+
+Once properly built and installed, you will find the importer under the meny entry
+Edit -> Plugins -> Import S2E trace. From there, please specify the location of the
+trace file to import (usually named ExecutionTrace.dat) and the state/path number
+(if not using symbolic mode, just accept the zero default).
+After import, you will go directly into graph navigation mode.
+
+You may want to inspect the trace in the "Trace window", or replay it in the replay
+debugger. Be sure to check the "Suspend on debugging start" under "Debugger options"
+before starting.
+
+Caveats
+=======
+
+If the imported state was running in symbolic mode, some register content may not be
+available as concrete value. Symbolic values are marked as `0x00DEAD00` values.
+
+
